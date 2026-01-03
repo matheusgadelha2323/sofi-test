@@ -1,5 +1,13 @@
 # ----------------- Implementation (TODO) -----------------
-# TODO: Implement the method below.
+def group_by_prefix(words, n)
+  raise ArgumentError, 'words must be an Array' unless words.is_a?(Array)
+  raise ArgumentError, 'n must be a positive integer' unless n.is_a?(Integer) && n > 0
+
+  words
+    .select { |word| word.is_a?(String) && word.length >= n }
+    .group_by { |word| word[0, n].downcase }
+    .values
+end
 # ----------------- Color helpers -----------------
 def green(t)  = "\e[32m#{t}\e[0m"
 def red(t)    = "\e[31m#{t}\e[0m"
